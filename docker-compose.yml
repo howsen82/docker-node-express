@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    volumes:
+      - ./src:/src
+      - node_exp_modules:/src/node_modules
+    ports:
+      - 8080:3000
+    environment:
+      - DEBUG="src"
+    command: [ "nodemon", "bin/www" ]
+
+  # prod:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   image: node-express
+  #   ports:
+  #     - 8080:3000
+  #   environment:
+  #     - DEBUG="src"
+
+volumes:
+  node_exp_modules:
+
+# docker-compose run -u $UID dev express --view hbs
+# docker-compose run -u root dev chown -R $UID /src/node_modules/
+# docker-compose run -u $UID dev npm i
+# docker build -t node-express .
+# docker run -d -p 8080:3000 node-express
