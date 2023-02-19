@@ -31,3 +31,4 @@ volumes:
 # docker-compose run -u $UID dev npm i
 # docker build -t node-express .
 # docker run -d -p 8080:3000 node-express
+# docker run -d -p 8080:3000 -e "DEBUG=src" node-express
